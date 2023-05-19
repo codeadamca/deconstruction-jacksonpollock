@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Pollock Deconstruction</title>
+
+    <style>
+
+        #canvas {
+            border: 5px solid red;
+            width: 1000px;
+            height: 1000px;
+            top: 100px;
+            position: relative;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Jason Pollock Deconstruction</h1>
+
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script>
+
+        // const distance = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1);
+
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+    
+        let x = null;
+        let y = null;
+        let previousX = null;
+        let previousY = null;
+        let distance = 0;
+
+        canvas.addEventListener('mousemove', function(event){
+
+            let rect = canvas.getBoundingClientRect();
+
+            previousX = x;
+            previousY = y;
+
+            x = event.clientX - rect.left;
+            y = event.clientY - rect.top;
+
+            if(previousX != null)
+            {
+
+                let distanceX = Math.round(x - previousX);
+                if(distanceX < 0) distanceX *= -1;
+
+                let distanceY = Math.round(y - previousY);
+                if(distanceY < 0) distanceY *= -1;
+
+                distance = Math.hypot(distanceX,distanceY);
+                if(distance > 50) distance = 50;
+
+                context.beginPath()
+                
+                context.strokeStyle = "#000000";
+                context.lineWidth = 50 - distance;
+
+                context.moveTo(previousX,previousY);
+                context.lineTo(x, y);
+                context.stroke();
+
+                if(distance < 10)
+                {
+
+                    context.fillStyle = "#000000";
+                    context.beginPath();
+                    context.arc(x, y, 50 - distance + Math.random() * 40, 0, 2 * Math.PI);
+                    context.fill();
+
+                }                
+
+            }
+
+        });
+
+
+    </script>
+    
+</body>
+</html>

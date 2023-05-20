@@ -2,6 +2,8 @@
 
 This is a deconstruction of the [Jackson Pollock](https://jacksonpollock.org/) website found on [THe Useless Web](https://theuselessweb.com/).
 
+![Jackson Pollock - The Useless Web](_readme/screenshot-jacksonpollock.png)
+
 ***
 
 ## Repo Resources

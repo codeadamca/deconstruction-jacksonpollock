@@ -18,70 +18,130 @@
             height: 100%;
         }
 
-
     </style>
 
 </head>
 <body>
 
-    <canvas id="canvas" width="1000" height="1000"></canvas>
+    <canvas id="canvas"></canvas>
 
     <script>
 
-        // const distance = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1);
+        // Create a variable for the canvas and contect
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
 
-        const canvas = document.getElementById("canvas");
-        const context = canvas.getContext("2d");
-    
+        // Add a function to keep the cavas 100% width and height
+        function resizeCanvas() {
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+        }
+
+        window.addEventListener('resize', resizeCanvas, false);
+
+        resizeCanvas();
+
+        // Create vairables for any data that needs to be tracked
         let x = null;
         let y = null;
         let previousX = null;
         let previousY = null;
-        let distance = 0;
+        let width = null;
+        let colour = '#000000';
 
+        // Add the drawing code on mouse move
         canvas.addEventListener('mousemove', function(event){
 
-            let rect = canvas.getBoundingClientRect();
-
+            // Save the position from last mouse move
             previousX = x;
             previousY = y;
 
-            x = event.clientX - rect.left;
-            y = event.clientY - rect.top;
+            // Get the new position of the mouse
+            x = event.clientX;
+            y = event.clientY;
 
+            // If this is the second mouse move
             if(previousX != null)
             {
 
+                // Calculate the horizontal move distance
                 let distanceX = Math.round(x - previousX);
                 if(distanceX < 0) distanceX *= -1;
 
+                // Calcualte the vertical move distance
                 let distanceY = Math.round(y - previousY);
                 if(distanceY < 0) distanceY *= -1;
 
-                distance = Math.hypot(distanceX,distanceY);
+                // Calcualte the diagonal distance
+                let distance = Math.hypot(distanceX,distanceY);
                 if(distance > 50) distance = 50;
 
+                // Start a new path
                 context.beginPath()
                 
-                context.strokeStyle = "#000000";
-                context.lineWidth = 50 - distance;
+                // Calculate the width based on the distance moved
+                let targetWidth = Math.round((50 - distance) / 3);
+                if(targetWidth < 3) targetWidth = 3;
 
+                // Instead of settig the width, we ease it
+                if(width == null) width = targetWidth;
+                else if(targetWidth < width) width --;
+                else if(targetWidth > width) width ++;
+
+                // Set the colour and width
+                context.strokeStyle = colour;
+                context.lineWidth = width;
+
+                // Draw the line
                 context.moveTo(previousX,previousY);
                 context.lineTo(x, y);
                 context.stroke();
 
-                if(distance < 10)
+                // If the mosue if movin slow, draw a large circle
+                if(distance < 5)
                 {
 
-                    context.fillStyle = "#000000";
+                    context.fillStyle = colour;
                     context.beginPath();
                     context.arc(x, y, 50 - distance + Math.random() * 40, 0, 2 * Math.PI);
                     context.fill();
 
-                }                
+                }  
+                
+                // If the mosue is moving fast, draw a circle the size of the stroke
+                // This prevents the line from looking lke a bunch of rectangles
+                else
+                {
+                    context.fillStyle = colour;
+                    context.beginPath();
+                    context.arc(x, y, width / 2, 0, 2 * Math.PI);
+                    context.fill();
+                }
+
+                // Add some random spatter
+                if(Math.random() > 0.8)
+                {
+                    context.fillStyle = colour;
+                    context.beginPath();
+                    context.arc(
+                        x - 20 + Math.random() * 40,
+                        y - 20 + Math.random() * 40,
+                        2 + Math.random() * 4, 0, 2 * Math.PI);
+                    context.fill();
+                }
 
             }
 
+        });
+
+        // This function changes the colour to a random colour when
+        // the canvas is clicked
+        canvas.addEventListener('click', function(){
+            colour = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
         });
 
 

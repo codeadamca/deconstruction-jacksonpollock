@@ -12,7 +12,7 @@ https://codeadamca.github.io/javascript-canvas-jacksonpollock/
 
 ## Repo Resources
 
-* [Jackson Pollock](https://tailwindcss.com/](https://jacksonpollock.org/)
+* [Jackson Pollock](https://jacksonpollock.org/)
 * [The Useless Web](https://theuselessweb.com/)
 
 <a href="https://codeadam.ca">

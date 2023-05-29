@@ -6,7 +6,7 @@ This is a deconstruction of the [Jackson Pollock](https://jacksonpollock.org/) w
 
 Current result is available here:
 
-https://codeadamca.github.io/javascript-canvas-jacksonpollock/demo.html
+https://codeadamca.github.io/javascript-canvas-jacksonpollock/deconstruction.html
 
 ***
 

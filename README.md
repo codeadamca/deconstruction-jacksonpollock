@@ -1,4 +1,4 @@
-# javascript-canvas-jacksonpollock
+# Useless Web Deconstruction - Jackson Pollock
 
 This is a deconstruction of the [Jackson Pollock](https://jacksonpollock.org/) website found on [The Useless Web](https://theuselessweb.com/).
 

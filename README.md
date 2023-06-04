@@ -5,7 +5,7 @@ This is a deconstruction of the [Jackson Pollock](https://jacksonpollock.org/) w
 ![Jackson Pollock - The Useless Web](_readme/screenshot-jacksonpollock.png)
 
 Current result is available here:  
-https://codeadamca.github.io/javascript-canvas-jacksonpollock/deconstruction.html
+https://codeadamca.github.io/deconstruction-jacksonpollock/deconstruction.html
 
 ***
 

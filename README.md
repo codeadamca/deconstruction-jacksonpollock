@@ -4,8 +4,8 @@ This is a deconstruction of the [Jackson Pollock](https://jacksonpollock.org/) w
 
 ![Jackson Pollock - The Useless Web](_readme/screenshot-jacksonpollock.png)
 
-Current result is available at  
-https://codeadamca.github.io/deconstruction-jacksonpollock/deconstruction.html
+> Current result is available at  
+> https://codeadamca.github.io/deconstruction-jacksonpollock/deconstruction.html
 
 ***
 

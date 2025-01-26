@@ -14,6 +14,7 @@ This is a deconstruction of the [Jackson Pollock](https://jacksonpollock.org/) w
 * [Jackson Pollock](https://jacksonpollock.org/)
 * [The Useless Web](https://theuselessweb.com/)
 
+<br>
 <a href="https://codeadam.ca">
-<img src="https://codeadam.ca/images/code-block.png" width="100">
+<img src="https://cdn.codeadam.ca/images@1.0.0/codeadam-logo-coloured-horizontal.png" width="200">
 </a>
